@@ -1,0 +1,118 @@
+Index: core/src/main/java/cn/hwsoft/wisdom/core/domain/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- core/src/main/java/cn/hwsoft/wisdom/core/domain/User.java	(revision b1d71a37a2a6a220a4d5465e650987e49e9bb9be)
++++ core/src/main/java/cn/hwsoft/wisdom/core/domain/User.java	(revision b1d71a37a2a6a220a4d5465e650987e49e9bb9be)
+@@ -1,15 +0,0 @@
+-package cn.hwsoft.wisdom.core.domain;
+-
+-import lombok.Getter;
+-import lombok.Setter;
+-import lombok.ToString;
+-
+-@Setter@Getter@ToString
+-public class User {
+-    private Integer id;
+-
+-    private String name;
+-
+-    private String age;
+-
+-}
+\ No newline at end of file
+Index: core/src/main/java/cn/hwsoft/wisdom/core/mapper/UserMapper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- core/src/main/java/cn/hwsoft/wisdom/core/mapper/UserMapper.java	(revision b1d71a37a2a6a220a4d5465e650987e49e9bb9be)
++++ core/src/main/java/cn/hwsoft/wisdom/core/mapper/UserMapper.java	(revision b1d71a37a2a6a220a4d5465e650987e49e9bb9be)
+@@ -1,16 +0,0 @@
+-package cn.hwsoft.wisdom.core.mapper;
+-
+-import cn.hwsoft.wisdom.core.domain.User;
+-import java.util.List;
+-
+-public interface UserMapper {
+-    int deleteByPrimaryKey(Integer id);
+-
+-    int insert(User record);
+-
+-    User selectByPrimaryKey(Integer id);
+-
+-    List<User> selectAll();
+-
+-    int updateByPrimaryKey(User record);
+-}
+\ No newline at end of file
+Index: core/src/main/resources/mapper/UserMapper.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- core/src/main/resources/mapper/UserMapper.xml	(revision b1d71a37a2a6a220a4d5465e650987e49e9bb9be)
++++ core/src/main/resources/mapper/UserMapper.xml	(revision b1d71a37a2a6a220a4d5465e650987e49e9bb9be)
+@@ -1,60 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+-<mapper namespace="cn.hwsoft.wisdom.core.mapper.UserMapper">
+-  <resultMap id="BaseResultMap" type="cn.hwsoft.wisdom.core.domain.User">
+-    <id column="id" jdbcType="INTEGER" property="id" />
+-    <result column="name" jdbcType="VARCHAR" property="name" />
+-    <result column="age" jdbcType="VARCHAR" property="age" />
+-  </resultMap>
+-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+-    delete from user
+-    where id = #{id,jdbcType=INTEGER}
+-  </delete>
+-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.hwsoft.wisdom.core.domain.User" useGeneratedKeys="true">
+-    insert into user (name, age)
+-    values (#{name,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR})
+-  </insert>
+-  <update id="updateByPrimaryKey" parameterType="cn.hwsoft.wisdom.core.domain.User">
+-    update user
+-    set name = #{name,jdbcType=VARCHAR},
+-      age = #{age,jdbcType=VARCHAR}
+-    where id = #{id,jdbcType=INTEGER}
+-  </update>
+-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+-    select id, name, age
+-    from user
+-    where id = #{id,jdbcType=INTEGER}
+-  </select>
+-  <select id="selectAll" resultMap="BaseResultMap">
+-    select id, name, age
+-    from user
+-  </select>
+-  <resultMap id="BaseResultMap" type="cn.hwsoft.wisdom.core.domain.User">
+-    <id column="id" jdbcType="INTEGER" property="id" />
+-    <result column="name" jdbcType="VARCHAR" property="name" />
+-    <result column="age" jdbcType="VARCHAR" property="age" />
+-  </resultMap>
+-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+-    delete from user
+-    where id = #{id,jdbcType=INTEGER}
+-  </delete>
+-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.hwsoft.wisdom.core.domain.User" useGeneratedKeys="true">
+-    insert into user (name, age)
+-    values (#{name,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR})
+-  </insert>
+-  <update id="updateByPrimaryKey" parameterType="cn.hwsoft.wisdom.core.domain.User">
+-    update user
+-    set name = #{name,jdbcType=VARCHAR},
+-      age = #{age,jdbcType=VARCHAR}
+-    where id = #{id,jdbcType=INTEGER}
+-  </update>
+-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+-    select id, name, age
+-    from user
+-    where id = #{id,jdbcType=INTEGER}
+-  </select>
+-  <select id="selectAll" resultMap="BaseResultMap">
+-    select id, name, age
+-    from user
+-  </select>
+-</mapper>
+\ No newline at end of file
