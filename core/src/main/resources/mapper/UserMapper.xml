@@ -3,58 +3,54 @@
 <mapper namespace="cn.hwsoft.wisdom.core.mapper.UserMapper">
   <resultMap id="BaseResultMap" type="cn.hwsoft.wisdom.core.domain.User">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="identity" jdbcType="VARCHAR" property="identity" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="realname" jdbcType="VARCHAR" property="realname" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone" jdbcType="INTEGER" property="phone" />
+    <result column="cover" jdbcType="VARCHAR" property="cover" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_time" jdbcType="INTEGER" property="create_time" />
+    <result column="update_time" jdbcType="INTEGER" property="update_time" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.hwsoft.wisdom.core.domain.User" useGeneratedKeys="true">
-    insert into user (name, age)
-    values (#{name,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR})
+    insert into user (identity, nickname, realname, 
+      password, phone, cover, 
+      address, status, create_time, 
+      update_time)
+    values (#{identity,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{phone,jdbcType=INTEGER}, #{cover,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{create_time,jdbcType=INTEGER}, 
+      #{update_time,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="cn.hwsoft.wisdom.core.domain.User">
     update user
-    set name = #{name,jdbcType=VARCHAR},
-      age = #{age,jdbcType=VARCHAR}
+    set identity = #{identity,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      realname = #{realname,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=INTEGER},
+      cover = #{cover,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      create_time = #{create_time,jdbcType=INTEGER},
+      update_time = #{update_time,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, name, age
+    select id, identity, nickname, realname, password, phone, cover, address, status, 
+    create_time, update_time
     from user
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, name, age
-    from user
-  </select>
-  <resultMap id="BaseResultMap" type="cn.hwsoft.wisdom.core.domain.User">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="age" jdbcType="VARCHAR" property="age" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.hwsoft.wisdom.core.domain.User" useGeneratedKeys="true">
-    insert into user (name, age)
-    values (#{name,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="cn.hwsoft.wisdom.core.domain.User">
-    update user
-    set name = #{name,jdbcType=VARCHAR},
-      age = #{age,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, name, age
-    from user
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, name, age
+    select id, identity, nickname, realname, password, phone, cover, address, status, 
+    create_time, update_time
     from user
   </select>
 </mapper>
